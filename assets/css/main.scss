@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "@/node_modules/bootstrap/scss/functions";
+
+// Default variable overrides
+// $primary: #191970;
+// $secondary: #0be0d4; // rgba(0, 0, 0, 0.5); // #b185d6;
+$light: #d3d3d3;
+
+$body-bg: #efefef; // linear-gradient(180deg, rgba(#191970, 1) 0%, rgba(#080830, 1) 100%);
+// $body-color: #fff;
+// $link-color: #fff;
+$link-decoration: none;
+// $link-hover-color: $light;
+
+// $text-light: #acb3df;
+
+$border-width: 2px;
+$border-radius: 0;
+
+// Typography
+$font-family-base: "Ubuntu", sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.7;
+
+$display-font-sizes: (
+  1: 6.25rem,
+  2: 4.5rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 2.5rem,
+) !default;
+
+$headings-font-family: "Chewy", sans-serif;
+
+// navbar
+// $navbar-dark-color: #fff;
+// $nav-link-padding-x: 6rem;
+
+// buttons
+$btn-active-box-shadow: 0;
+$btn-focus-width: 0;
+$btn-padding-y: 0.35rem;
+$btn-padding-x: 2rem;
+$btn-border-width: 0;
+$btn-border-radius: 5px;
+$btn-font-weight: 500;
+
+$badge-padding-x: 0.9rem;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1366px,
+);
+
+// font sizes
+$h1-font-size: 96px;
+
+$font-weight-light: 300;
+$font-weight-normal: 500;
+$font-weight-bold: 700;
+$font-weight-base: 400;
+
+$headings-font-weight: 700;
+// $spacer: 1rem; // default value
+// $card-spacer-y: $spacer * 1.2;
+// $card-spacer-x: $spacer * 1.8;
+
+// $input-border-width: 0;
+// $input-btn-focus-width: 0;
+// $input-focus-bg: auto;
+
+// $form-check-input-border: none;
+// $form-check-input-width: 1.4em;
+// $form-check-input-checked-bg-color: auto;
+
+// $btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#ffffff'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>");
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "@/node_modules/bootstrap/scss/variables";
+@import "@/node_modules/bootstrap/scss/mixins";
+@import "@/node_modules/bootstrap/scss/utilities";
+
+// 4. Include any optional Bootstrap components as you like
+@import "@/node_modules/bootstrap/scss/root";
+@import "@/node_modules/bootstrap/scss/reboot";
+@import "@/node_modules/bootstrap/scss/buttons";
+@import "@/node_modules/bootstrap/scss/badge";
+@import "@/node_modules/bootstrap/scss/type";
+@import "@/node_modules/bootstrap/scss/images";
+@import "@/node_modules/bootstrap/scss/containers";
+@import "@/node_modules/bootstrap/scss/grid";
+@import "@/node_modules/bootstrap/scss/navbar";
+@import "@/node_modules/bootstrap/scss/nav";
+@import "@/node_modules/bootstrap/scss/card";
+@import "@/node_modules/bootstrap/scss/dropdown";
+@import "@/node_modules/bootstrap/scss/forms";
+@import "@/node_modules/bootstrap/scss/transitions";
+
+// Helpers
+@import "@/node_modules/bootstrap/scss/helpers/position";
+@import "@/node_modules/bootstrap/scss/helpers/stacks";
+@import "@/node_modules/bootstrap/scss/helpers/ratio";
+
+// Utilities
+@import "@/node_modules/bootstrap/scss/utilities/api";
+
+// my customizations
+
+// body {
+//   font-weight: 400; // no variable ??
+// }
+
+a {
+  transition: color 0.24s ease-in-out;
+}
+
+// a.card:hover {
+//   color: #fff;
+// }
+
+// .btn-secondary {
+//   transition: background-color 0.24s ease-in-out;
+
+//   &:hover,
+//   &:active:hover,
+//   &:focus {
+//     background-color: $light;
+//   }
+// }
+
+// global css
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.1, 1);
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0.1;
+  transform: translateY(60px);
+}
