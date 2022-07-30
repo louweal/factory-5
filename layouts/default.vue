@@ -2,13 +2,11 @@
   <div id="top">
     <Background />
 
-    <nuxt-link to="/">Factory 5</nuxt-link>
-
-    <navbar />
-
-    <div class="container-lg">
-      <Nuxt />
+    <div class="fixed-top">
+      <navbar />
     </div>
+
+    <Nuxt />
   </div>
 </template>
 

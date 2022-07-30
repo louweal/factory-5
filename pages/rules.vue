@@ -3,7 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-8">
-          <h1>Rules</h1>
+          <h1 class="heading-c-4">Rules</h1>
+
+          <p>To do: write my own rules!</p>
 
           <p>
             In Take 5 – originally known as 6 nimmt!, which translates as “6

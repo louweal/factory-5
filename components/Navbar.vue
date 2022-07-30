@@ -1,49 +1,33 @@
 <template>
-  <div class="container-fluid bg-light">
+  <div class="container-fluid xxxbg-primary p-1 px-2">
     <div class="d-flex justify-content-between">
       <div>
         <ul class="list-inline mb-0">
           <li class="list-inline-item">
+            <nuxt-link to="/">Home</nuxt-link>
+          </li>
+          <li class="list-inline-item">
             <nuxt-link to="/new">New game</nuxt-link>
           </li>
           <li class="list-inline-item">
+            <nuxt-link to="/invite">Invite</nuxt-link>
+          </li>
+          <li class="list-inline-item btn btn-primary">
             <nuxt-link to="/rules">Rules</nuxt-link>
           </li>
           <li class="list-inline-item">
             <nuxt-link to="/about">About</nuxt-link>
           </li>
-
-          <!-- <li class="list-inline-item">
-            <span @click="test">Help</span>
-            <div
-              class="dropdown-menu"
-              ref="dropdown"
-              aria-labelledby="dropdownMenuButton"
-            >
-              <a class="dropdown-item" href="#">Invite friend</a>
-              <a class="dropdown-item" href="#">Rules</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li> -->
-
-          <!-- <li>
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                @click="test"
-              >
-                Dropdown button
-              </button>
-            </div>
-          </li> -->
         </ul>
       </div>
-      <div>Score: 24 - 42</div>
+      <div>
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item heading-c-4 fs-4" v-if="$route.query.id">
+            #{{ $route.query.id }}
+          </li>
+          <li class="xxxlist-inline-item heading-c-4 fs-1">+5</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>

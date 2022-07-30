@@ -17,13 +17,21 @@ export default {
   name: "particle",
 
   props: {
-    min: {
+    ymin: {
       type: Number,
       default: 0,
     },
-    max: {
+    ymax: {
       type: Number,
       default: 110,
+    },
+    xmin: {
+      type: Number,
+      default: 0,
+    },
+    xmax: {
+      type: Number,
+      default: 100,
     },
   },
 
@@ -34,10 +42,15 @@ export default {
       )} 0%, ${this.randomRGB(0.9)} 100%)`;
     },
     randomXPos() {
-      return Math.ceil(Math.random() * 100) + "%";
+      // return Math.ceil(Math.random() * 50) + "%";
+      return (
+        this.xmin + Math.ceil(Math.random() * (this.xmax - this.xmin)) + "%"
+      );
     },
     randomYPos() {
-      return this.min + Math.ceil(Math.random() * (this.max - this.min)) + "%";
+      return (
+        this.ymin + Math.ceil(Math.random() * (this.ymax - this.ymin)) + "%"
+      );
     },
     randomSize() {
       return 2 + Math.ceil(Math.random() * 6) + "px";

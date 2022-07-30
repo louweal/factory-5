@@ -6,9 +6,9 @@
       alt="factories"
     />
 
-    <particle v-for="k in 3 * cat" :min="33" :key="'k' + k" />
+    <particle v-for="k in 3 * cat" :ymin="33" :key="'k' + k" />
 
-    <div class="corners fs-4">
+    <div class="corners fs-4 d-none d-lg-block">
       <div class="top-left-corner">
         {{ num }}
       </div>
@@ -81,6 +81,8 @@ export default {
 <style lang="scss" scoped>
 .card {
   font-family: "Chewy", sans-serif;
+  animation: fadeIn 1s 1s ease-in forwards;
+  opacity: 0;
 
   text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000,
     -2px -2px 0 #000;
@@ -92,7 +94,9 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid rgba(orange, 0.5);
+    padding-top: 1.2rem;
+    // border: 1px solid rgba(orange, 0.5);
+    // border-radius: 1rem;
   }
 
   .card-cat {
@@ -136,6 +140,12 @@ export default {
       bottom: 0; // 0.2rem;
       right: 0.7rem;
     }
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }
 </style>
