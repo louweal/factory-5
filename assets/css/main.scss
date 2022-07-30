@@ -12,7 +12,7 @@ $light: #d3d3d3;
 
 $body-bg: #efefef; // linear-gradient(180deg, rgba(#191970, 1) 0%, rgba(#080830, 1) 100%);
 // $body-color: #fff;
-// $link-color: #fff;
+$link-color: #111;
 $link-decoration: none;
 // $link-hover-color: $light;
 
@@ -27,7 +27,7 @@ $font-size-base: 1rem;
 $line-height-base: 1.7;
 
 $display-font-sizes: (
-  1: 6.25rem,
+  1: 5rem,
   2: 4.5rem,
   3: 4rem,
   4: 3.5rem,
@@ -57,7 +57,7 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   xl: 1140px,
-  xxl: 1366px,
+  xxl: 1166px,
 );
 
 // font sizes
@@ -69,9 +69,10 @@ $font-weight-bold: 700;
 $font-weight-base: 400;
 
 $headings-font-weight: 700;
-// $spacer: 1rem; // default value
-// $card-spacer-y: $spacer * 1.2;
-// $card-spacer-x: $spacer * 1.8;
+$spacer: 1rem; // default value
+$card-spacer-y: $spacer * 1.2;
+$card-spacer-x: $spacer * 1.8;
+$card-img-overlay-padding: $spacer * 0.4;
 
 // $input-border-width: 0;
 // $input-btn-focus-width: 0;

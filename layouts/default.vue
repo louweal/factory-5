@@ -2,7 +2,7 @@
   <div id="top">
     <Background />
 
-    <a href="#">Factory 5</a>
+    <nuxt-link to="/">Factory 5</nuxt-link>
 
     <navbar />
 

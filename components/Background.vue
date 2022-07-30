@@ -31,6 +31,6 @@
   background-image: url("~/images/bg.jpg");
   background-size: cover;
   background-position: bottom center;
-  opacity: 0.5;
+  opacity: 0.77;
 }
 </style>

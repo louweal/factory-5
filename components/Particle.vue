@@ -30,8 +30,8 @@ export default {
   computed: {
     randomGradient() {
       return `radial-gradient( circle, ${this.randomRGB(
-        0.4
-      )} 0%, ${this.randomRGB(0.5)} 100%)`;
+        0.8
+      )} 0%, ${this.randomRGB(0.9)} 100%)`;
     },
     randomXPos() {
       return Math.ceil(Math.random() * 100) + "%";
