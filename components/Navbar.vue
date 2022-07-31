@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid xxxbg-primary p-1 px-2">
+  <div class="container-fluid p-1 px-2">
     <div class="d-flex justify-content-between">
       <div>
         <ul class="list-inline mb-0">

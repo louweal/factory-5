@@ -40,10 +40,10 @@
   background-size: cover;
   background-position: bottom center;
   opacity: 0.6;
-  transform: scale(200%);
-  transform-origin: bottom center;
+  // transform: scale(200%);
+  // transform-origin: bottom center;
 
-  animation: zoomOut 1.5s 2s cubic-bezier(0.2, 0, 0.1, 1) forwards;
+  // animation: zoomOut 1.5s 2s cubic-bezier(0.2, 0, 0.1, 1) forwards;
 }
 
 @keyframes zoomOut {

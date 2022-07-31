@@ -1,11 +1,5 @@
 <template>
   <main>
-    <span
-      v-if="updatedPoints !== false && activePlayer === 0"
-      class="position-absolute top-0 end-0 heading-c-4 fs-1 animation-c"
-      >-{{ updatedPoints }}</span
-    >
-
     <section class="min-vh-100">
       <div class="container">
         <div class="row min-vh-100 pt-5 pt-lg-0">
@@ -27,7 +21,7 @@
                 :num="c"
                 v-for="(c, index) in hand"
                 :key="index"
-                style="max-width: calc(20% - 0.2rem)"
+                style="max-width: calc(20% - 0.2rem); cursor: pointer"
                 @click.native="playCard(c, index)"
               />
             </div>
@@ -42,14 +36,13 @@
           </div>
 
           <div class="col-12 col-lg-9 offset-lg-1 align-self-center">
-            <div class="hstack gap-1" v-for="(r, index) in rows" :key="index">
-              <span
-                xxxclick="selectRow"
-                class="fs-2 heading-c-4 me-2"
-                style="cursor: pointer"
-              >
-                {{ index + 1 }}
-              </span>
+            <div
+              @click="selectRow(index)"
+              style="cursor: pointer"
+              class="hstack gap-1"
+              v-for="(r, index) in rows"
+              :key="index"
+            >
               <card
                 :num="i"
                 v-for="i in rows[index]"
@@ -61,6 +54,13 @@
         </div>
       </div>
     </section>
+
+    <span
+      v-if="updatedPoints !== false && activePlayer === 0"
+      class="position-absolute top-0 end-0 heading-c-4 fs-1 animation-c"
+    >
+      -{{ updatedPoints }}
+    </span>
   </main>
 </template>
 
@@ -80,6 +80,8 @@ export default {
       shuffledDeck: this.shuffle(this.$options.deck),
       rows: [],
       hand: [],
+      card: -1,
+      cardIndex: -1,
       computerHand: [],
       selectedRow: -1,
       updatedPoints: false,
@@ -119,6 +121,22 @@ export default {
       return array;
     },
 
+    selectRow(row) {
+      this.selectedRow = row;
+
+      // update points
+      let cats = this.rows[row].map((c) => category(c));
+      let points = cats.reduce((partialSum, a) => partialSum + a, 0);
+      this.updatePoints(points);
+
+      // update hand
+      this.hand.splice(this.cardIndex, 1); //remove card from hand
+      // update row
+      this.rows[row] = [this.card];
+
+      this.computerPlayCard();
+    },
+
     lastCardInRow(row) {
       return row[row.length - 1];
     },
@@ -148,18 +166,30 @@ export default {
       }
     },
 
-    playCard(c, index) {
-      // console.log(c);
-      // console.log("index" + index);
+    waitForRow() {
+      console.log("waiting...");
+      // return this.selectedRow;
+    },
 
+    playCard(c, index) {
+      this.card = c;
+      this.cardIndex = index;
       let row = this.getRow(c);
 
+      // reset state for points update animation
+      this.updatedPoints = false;
+
+      // console.log(row);
+
       if (row === -1) {
+        console.log("first select row... ?");
         // console.log("remove a row!");
+        console.log(this.selectedRow);
+
+        return;
       } else {
         if (this.rows[row].length < 5) {
           this.rows[row].push(c);
-
           this.hand.splice(index, 1); //remove card from hand
         } else {
           let cats = this.rows[row].map((c) => category(c));
@@ -184,16 +214,25 @@ export default {
         row = this.getRow(randomCard);
 
         if (row !== -1) {
-          // found card
-          console.log("found!");
           break;
-        } else {
-          console.log("not found!");
         }
         i += 1;
       }
       if (row === -1) {
         console.log("other strategy");
+
+        let sortedHand = [...this.computerHand].sort((a, b) => a - b);
+        // chooses lowest value from hand
+        let c = sortedHand[0];
+        console.log("card:" + c);
+        // takes row from board with least amount of ponts
+        let cats = this.rows.map((r) => this.rows[r].map((c) => category(c)));
+
+        console.log("cats :>> ", cats);
+        let points = cats.map((c) =>
+          reduce((partialSum, a) => partialSum + a, 0)
+        );
+        console.log("points:" + points);
       } else {
         console.log(randomCard);
 

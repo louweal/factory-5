@@ -21,6 +21,10 @@ $link-decoration: none;
 $border-width: 3px;
 $border-radius: 1rem;
 
+$border-color: #111;
+
+$card-border-color: #111;
+
 // Typography
 $font-family-base: "Ubuntu", sans-serif;
 $font-size-base: 1rem;
@@ -36,10 +40,6 @@ $display-font-sizes: (
 ) !default;
 
 $headings-font-family: "Chewy", sans-serif;
-
-// navbar
-// $navbar-dark-color: #fff;
-// $nav-link-padding-x: 6rem;
 
 // buttons
 $btn-active-box-shadow: 0;
@@ -119,15 +119,21 @@ $input-border-color: #000;
 // @import "@/node_modules/bootstrap/scss/helpers/ratio";
 
 // Utilities
+$utilities: map-merge(
+  $utilities,
+  (
+    "cursor": (
+      property: cursor,
+      values: pointer,
+    ),
+  )
+);
+
 @import "@/node_modules/bootstrap/scss/utilities/api";
 
 a {
   transition: color 0.24s ease-in-out;
 }
-
-// a.card:hover {
-//   color: #fff;
-// }
 
 .btn-primary,
 .btn {
@@ -184,6 +190,10 @@ a {
   z-index: 3;
 }
 
+.bg-c {
+  background-color: rgba(#d3d3d3, 0.7);
+}
+
 @keyframes fadeInUpAway {
   76% {
     transform: scale(100%) translateY(0);
@@ -193,4 +203,25 @@ a {
     transform: translateY(0px);
     opacity: 0;
   }
+}
+
+.animation-rules {
+  animation: fadeInUp 1s 0s cubic-bezier(0.2, 0, 0.1, 1) forwards;
+  transform: translateY(90%);
+  opacity: 0.2;
+  // z-index: 3;
+}
+
+@keyframes fadeInUp {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  // 100% {
+  //   transform: translateY(0px);
+  //   // opacity: 0;
+  // }
 }

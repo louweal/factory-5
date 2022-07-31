@@ -67,8 +67,8 @@ export default {
 <style lang="scss" scoped>
 .card {
   font-family: "Chewy", sans-serif;
-  // animation: fadeIn 1s 1s ease-in forwards;
-  // opacity: 0;
+  animation: fadeIn 1s 1s ease-in forwards;
+  opacity: 0;
 
   text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000,
     -2px -2px 0 #000;
