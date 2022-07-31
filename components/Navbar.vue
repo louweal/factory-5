@@ -6,17 +6,18 @@
           <li class="list-inline-item">
             <nuxt-link to="/">Home</nuxt-link>
           </li>
-          <li class="list-inline-item">
-            <nuxt-link to="/new">New game</nuxt-link>
+          <!-- <li class="list-inline-item">
+            <nuxt-link to="/game/single">New game</nuxt-link>
           </li>
           <li class="list-inline-item">
             <nuxt-link to="/invite">Invite</nuxt-link>
           </li>
-          <li class="list-inline-item btn btn-primary">
-            <nuxt-link to="/rules">Rules</nuxt-link>
-          </li>
+
           <li class="list-inline-item">
             <nuxt-link to="/about">About</nuxt-link>
+          </li> -->
+          <li class="list-inline-item btn btn-secondary">
+            <nuxt-link to="/rules">RULES</nuxt-link>
           </li>
         </ul>
       </div>
@@ -25,7 +26,6 @@
           <li class="list-inline-item heading-c-4 fs-4" v-if="$route.query.id">
             #{{ $route.query.id }}
           </li>
-          <li class="xxxlist-inline-item heading-c-4 fs-1">+5</li>
         </ul>
       </div>
     </div>
@@ -56,10 +56,4 @@ export default {
 };
 </script>
 
-<style>
-.navbar {
-}
-
-.dropdown-menu {
-}
-</style>
+<style></style>

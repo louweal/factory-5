@@ -158,7 +158,7 @@ a {
 .heading-c-4 {
   font-family: "Chewy", sans-serif;
   color: #fff;
-  letter-spacing: 0.12em; //2px;
+  letter-spacing: 0.09em; //2px;
 }
 
 .heading-c-4 {
@@ -175,4 +175,22 @@ a {
 .mb-c {
   // custom margin bottom to avoid overlay with busy part of background
   margin-bottom: 280px;
+}
+
+.animation-c {
+  animation: fadeInUpAway 3s 0s ease-out forwards;
+  transform: translateY(300px) scale(30%);
+  opacity: 0.2;
+  z-index: 3;
+}
+
+@keyframes fadeInUpAway {
+  76% {
+    transform: scale(100%) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
 }

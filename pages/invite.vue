@@ -16,7 +16,9 @@
 
           <div class="fs-2 heading-c-4 mb-5">{{ newGameId }}</div>
 
-          <nuxt-link :to="`/new?id=${newGameId}`" class="btn btn-primary mb-2"
+          <nuxt-link
+            :to="`/game/single?id=${newGameId}`"
+            class="btn btn-primary mb-2"
             >CONTINUE</nuxt-link
           >
         </div>
@@ -31,7 +33,7 @@
               class="form-control xxxbg-c"
             />
 
-            <nuxt-link :to="`/new?id=`" class="btn btn-secondary mb-5"
+            <nuxt-link :to="`/game/single?id=`" class="btn btn-secondary mb-5"
               >CONTINUE</nuxt-link
             >
           </div>

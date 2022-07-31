@@ -28,7 +28,10 @@
       <span class="text-center" style="letter-spacing: 1px">
         <span v-for="i in cat" :key="i">
           o
-          <br v-if="cat > 3 && parseInt(cat / 2) === i" />
+          <br
+            class="d-none d-lg-block"
+            v-if="cat > 3 && parseInt(cat / 2) === i"
+          />
         </span>
       </span>
     </div>
@@ -42,6 +45,8 @@
 </template>
 
 <script>
+import { category } from "../utils/game.js";
+
 export default {
   props: {
     num: {
@@ -53,26 +58,7 @@ export default {
 
   computed: {
     cat() {
-      if (this.num === 5) {
-        // 5
-        return 7;
-      }
-      if (this.num % 10 === 0) {
-        // 10, 20, 30, ...
-        return 2;
-      }
-      if (this.num % 5 === 0) {
-        // 15, 25, 35, ...
-        return 3;
-      }
-      let s = this.num.toString();
-
-      if (s.length > 1 && [...new Set(s.split(""))].length === 1) {
-        // repdigit (11, 22, 33, ...)
-        return 5;
-      } else {
-        return 1;
-      }
+      return category(this.num);
     },
   },
 };
@@ -81,8 +67,8 @@ export default {
 <style lang="scss" scoped>
 .card {
   font-family: "Chewy", sans-serif;
-  animation: fadeIn 1s 1s ease-in forwards;
-  opacity: 0;
+  // animation: fadeIn 1s 1s ease-in forwards;
+  // opacity: 0;
 
   text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000,
     -2px -2px 0 #000;
