@@ -105,8 +105,9 @@ $input-border-color: #000;
 @import "@/node_modules/bootstrap/scss/containers";
 @import "@/node_modules/bootstrap/scss/grid";
 @import "@/node_modules/bootstrap/scss/card";
-// @import "@/node_modules/bootstrap/scss/dropdown";
 @import "@/node_modules/bootstrap/scss/forms";
+@import "@/node_modules/bootstrap/scss/list-group";
+// @import "@/node_modules/bootstrap/scss/dropdown";
 // @import "@/node_modules/bootstrap/scss/transitions";
 // @import "@/node_modules/bootstrap/scss/badge";
 // @import "@/node_modules/bootstrap/scss/navbar";
@@ -116,6 +117,7 @@ $input-border-color: #000;
 // Helpers
 @import "@/node_modules/bootstrap/scss/helpers/position";
 @import "@/node_modules/bootstrap/scss/helpers/stacks";
+// @import "@/node_modules/bootstrap/scss/helpers/vr";
 // @import "@/node_modules/bootstrap/scss/helpers/ratio";
 
 // Utilities
@@ -130,6 +132,10 @@ $utilities: map-merge(
 );
 
 @import "@/node_modules/bootstrap/scss/utilities/api";
+
+body {
+  max-height: 100vh !important;
+}
 
 a {
   transition: color 0.24s ease-in-out;
@@ -178,10 +184,10 @@ a {
     -2px -2px 0 #000;
 }
 
-.mb-c {
-  // custom margin bottom to avoid overlay with busy part of background
-  margin-bottom: 280px;
-}
+// .mb-c {
+//   // custom margin bottom to avoid overlay with busy part of background
+//   margin-bottom: 280px;
+// }
 
 .animation-c {
   animation: fadeInUpAway 3s 0s ease-out forwards;

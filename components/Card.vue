@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-dark text-white mb-3">
+  <div class="card bg-dark text-white">
     <img
       :src="require(`~/images/bg${cat}.png`)"
       class="card-img"
