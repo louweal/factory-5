@@ -2,7 +2,7 @@
   <main class="mh-100">
     <section class="min-vh-100">
       <div class="container">
-        <div class="row min-vh-100 pt-5 pt-lg-0">
+        <div class="row min-vh-100 pt-5 pt-lg-0 mb-5 mb-lg-0">
           <div class="col-12 col-lg-2 align-self-center">
             <!-- hand desktop -->
             <card
@@ -36,7 +36,8 @@
               col-12 col-lg-9
               offset-lg-1
               align-self-center
-              xxxmb-5 xxxmb-lg-0
+              mb-5 mb-lg-0
+              pb-5 pb-lg-0
             "
           >
             <div
@@ -53,6 +54,8 @@
                 style="max-width: calc(20% - 0.2rem)"
               />
             </div>
+
+            <div class="d-lg-none my-5 w-100"><!-- spacer --></div>
           </div>
         </div>
       </div>
