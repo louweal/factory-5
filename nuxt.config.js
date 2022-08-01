@@ -17,7 +17,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "Avoid owning poluting factories and win the game!",
+        content: "A web3 board game!",
       },
       { name: "format-detection", content: "telephone=no" },
     ],
