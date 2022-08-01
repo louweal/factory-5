@@ -31,7 +31,14 @@
             <hr class="d-lg-none" />
           </div>
 
-          <div class="col-12 col-lg-9 offset-lg-1 align-self-center">
+          <div
+            class="
+              col-12 col-lg-9
+              offset-lg-1
+              align-self-center
+              xxxmb-5 xxxmb-lg-0
+            "
+          >
             <div
               @click="rowsSelectable ? selectRow(index) : false"
               :class="rowsSelectable ? 'board-row-c cursor-pointer' : false"
@@ -106,11 +113,13 @@ export default {
     points(newPoints, oldPoints) {
       if (newPoints <= 0) {
         console.log("you lost!");
+        this.$router.push("/lost");
       }
     },
     computerPoints(newPoints, oldPoints) {
       if (newPoints <= 0) {
         console.log("computer lost!");
+        this.$router.push("/won");
       }
     },
   },

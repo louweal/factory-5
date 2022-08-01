@@ -10,8 +10,8 @@
           class="
             position-absolute
             top-0
-            start-50
-            translate-middle
+            start-0
+            translate-middle-y
             rounded
             bg-secondary
             cursor-pointer
@@ -30,7 +30,7 @@
           class="
             position-absolute
             top-0
-            start-100
+            start-50
             translate-middle
             rounded-circle
             bg-primary
@@ -136,7 +136,7 @@ export default {
 
 <style lang="scss" scoped>
 .rules {
-  top: calc(86% + 2vw);
+  top: calc(100% - 2 * 42px); //calc(86% + 2vw);
   transition: all 0.5s ease-in;
 
   &--active {

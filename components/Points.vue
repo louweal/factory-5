@@ -94,14 +94,14 @@ export default {
 
 <style lang="scss" scoped>
 .points {
-  bottom: calc(86% + 2vw);
+  bottom: calc(100% - 2 * 42px); //calc(86% + 2vw);
   transition: all 0.5s ease-in;
   z-index: 4;
 
   &--active {
     // bottom: auto;
     // top: 0;
-    bottom: 10%;
+    bottom: 25%;
   }
 }
 </style>
