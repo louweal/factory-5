@@ -30,11 +30,7 @@
 
             <hr class="d-lg-none" />
 
-            {{ queue }}
-
-            {{ rowsSelectable }}
-
-            <div class="heading-c-4 fs-2">{{ activePlayer }}</div>
+            <!-- {{ queue }} -->
           </div>
 
           <div
@@ -94,11 +90,8 @@ export default {
       shuffledDeck: this.shuffle(this.$options.deck),
       rows: [],
       hand: [],
-      card: -1,
-      cardIndex: -1,
       computerHand: [],
       rowsSelectable: false,
-      // selectedRow: -1,
       updatedPoints: false,
       points: 50,
       computerPoints: 50,
@@ -193,13 +186,13 @@ export default {
         this.updatePoints(points);
 
         // update hand
-        this.hand.splice(this.cardIndex, 1); //remove card from hand
+        this.hand.splice(this.handIndex[0], 1); //remove card from hand
 
         // place all cards in row back in deck
         this.rows[row].map((c) => this.shuffledDeck.push(c));
 
         // update row
-        this.rows[row] = [this.card];
+        this.rows[row] = [this.queue[0]];
         this.rowsSelectable = false; // after toggling this, the playCards() continues
       }
     },
@@ -211,8 +204,13 @@ export default {
     updatePoints(points) {
       if (this.activePlayer === 0) {
         this.updatedPoints = points;
+        console.log(this.points + " => " + (this.points - points));
         this.points -= points;
       } else {
+        console.log(
+          this.computerPoints + " => " + (this.computerPoints - points)
+        );
+
         this.computerPoints -= points;
       }
     },
@@ -238,14 +236,8 @@ export default {
 
     selectCard(c, index) {
       this.rowsSelectable = false;
-      this.card = c;
-      this.cardIndex = index;
-      // let row = this.getRow(c);
-
       // reset state for points update animation
       this.updatedPoints = false;
-
-      // this.queue[0] = c;
       this.queue.push(c);
 
       this.handIndex.push(index);
@@ -267,9 +259,7 @@ export default {
         c = [...this.computerHand].sort((a, b) => a - b)[0];
       }
 
-      // this.queue[1] = c;
       this.queue.push(c);
-
       this.handIndex.push(i);
       this.playCards();
     },
@@ -296,9 +286,7 @@ export default {
           this.rows[row] = [c]; // replace row
           this.hand.splice(i, 1); // remove card from hand
         }
-        // return;
       }
-      // return new Promise(() => {});
     },
 
     computerPlayCard(c, i) {
@@ -347,15 +335,12 @@ export default {
       for (let i = 0; i < 2; i++) {
         let c = sortedQueue[i];
         let player = this.queue.indexOf(c);
-        // console.log("player :>> ", player);
         this.activePlayer = player;
 
         let index = this.handIndex[player];
 
-        // console.log("hand index :>> ", index);
         if (player === 0) {
           this.playCard(c, index);
-          console.log("done!");
         } else {
           this.computerPlayCard(c, index);
         }
