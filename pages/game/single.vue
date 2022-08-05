@@ -12,7 +12,7 @@
               :key="index"
               :style="index > 0 ? 'margin-top: -75%' : false"
               style="cursor: pointer"
-              @click.native="playCard(c, index)"
+              @click.native="selectCard(c, index)"
             />
 
             <!-- hand mobile -->
@@ -22,13 +22,19 @@
                 v-for="(c, index) in hand"
                 :key="index"
                 style="max-width: calc(20% - 0.2rem); cursor: pointer"
-                @click.native="playCard(c, index)"
+                @click.native="selectCard(c, index)"
               />
             </div>
 
             <!-- {{ computerPoints }} -->
 
             <hr class="d-lg-none" />
+
+            {{ queue }}
+
+            {{ rowsSelectable }}
+
+            <div class="heading-c-4 fs-2">{{ activePlayer }}</div>
           </div>
 
           <div
@@ -92,36 +98,31 @@ export default {
       cardIndex: -1,
       computerHand: [],
       rowsSelectable: false,
-      selectedRow: -1,
+      // selectedRow: -1,
       updatedPoints: false,
       points: 50,
       computerPoints: 50,
       activePlayer: 0,
+      queue: [],
+      handIndex: [], // indices of the queue cards in the hands
     };
   },
 
   watch: {
     hand(newHand, oldHand) {
       if (newHand.length === 0) {
-        console.log("hand is empty!");
-
         this.shuffledDeck = this.shuffle(this.shuffledDeck); // re-shuffle the deck
-
         this.hand = this.dealHand().sort((a, b) => a - b);
         this.computerHand = this.dealHand();
-
-        console.log(this.shuffledDeck.length);
       }
     },
     points(newPoints, oldPoints) {
       if (newPoints <= 0) {
-        console.log("you lost!");
         this.$router.push("/lost");
       }
     },
     computerPoints(newPoints, oldPoints) {
       if (newPoints <= 0) {
-        console.log("computer lost!");
         this.$router.push("/won");
       }
     },
@@ -152,8 +153,6 @@ export default {
     this.computerHand = this.dealHand();
     this.hand = this.dealHand();
     this.hand.sort((a, b) => a - b); // sort hand (in place)
-
-    console.log(this.shuffledDeck.length);
   },
 
   methods: {
@@ -186,9 +185,8 @@ export default {
     },
 
     selectRow(row) {
-      if (this.rowsSelectable) {
-        this.selectedRow = row;
-
+      console.log("clicked row!");
+      if (this.rowsSelectable && this.activePlayer === 0) {
         // update points
         let cats = this.rows[row].map((c) => category(c));
         let points = cats.reduce((partialSum, a) => partialSum + a, 0);
@@ -202,9 +200,7 @@ export default {
 
         // update row
         this.rows[row] = [this.card];
-        this.rowsSelectable = false;
-        this.selectedRow = -1;
-        this.computerPlayCard();
+        this.rowsSelectable = false; // after toggling this, the playCards() continues
       }
     },
 
@@ -240,82 +236,140 @@ export default {
       }
     },
 
-    playCard(c, index) {
+    selectCard(c, index) {
       this.rowsSelectable = false;
-      this.selectedRow = -1;
       this.card = c;
       this.cardIndex = index;
-      let row = this.getRow(c);
+      // let row = this.getRow(c);
 
       // reset state for points update animation
       this.updatedPoints = false;
 
+      // this.queue[0] = c;
+      this.queue.push(c);
+
+      this.handIndex.push(index);
+      this.computerSelectCard();
+    },
+
+    computerSelectCard() {
+      let c = -1;
+      let row = -1;
+      let i = 0;
+
+      while (i <= 9) {
+        c = this.computerHand[i];
+        row = this.getRow(c);
+        if (row !== -1) break;
+        i += 1;
+      }
+      if (row === -1) {
+        c = [...this.computerHand].sort((a, b) => a - b)[0];
+      }
+
+      // this.queue[1] = c;
+      this.queue.push(c);
+
+      this.handIndex.push(i);
+      this.playCards();
+    },
+
+    sleep(ms) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    },
+
+    async playCard(c, i) {
+      let row = this.getRow(c);
       if (row === -1) {
         this.rowsSelectable = true;
-        return;
       } else {
         if (this.rows[row].length < 5) {
           this.rows[row].push(c);
-          this.hand.splice(index, 1); //remove card from hand
+          this.hand.splice(i, 1); //remove card from hand
         } else {
           let cats = this.rows[row].map((c) => category(c));
           let points = cats.reduce((partialSum, a) => partialSum + a, 0);
           this.updatePoints(points);
           this.rows[row].map((c) => this.shuffledDeck.push(c)); // place all cards in row back to deck
           this.rows[row] = [c]; // replace row
-          this.hand.splice(index, 1); // remove card from hand
+          this.hand.splice(i, 1); // remove card from hand
         }
+        // return;
       }
-
-      this.computerPlayCard();
+      // return new Promise(() => {});
     },
 
-    computerPlayCard() {
-      this.activePlayer = (this.activePlayer + 1) % 2;
-      let randomCard = -1;
-      let row = -1;
-      let i = 0;
-
-      while (i <= 9) {
-        randomCard = this.computerHand[i];
-        row = this.getRow(randomCard);
-        if (row !== -1) break;
-        i += 1;
-      }
-      if (row === -1) {
-        let sortedHand = [...this.computerHand].sort((a, b) => a - b);
-        // chooses lowest value from hand
-        let c = sortedHand[0];
-        console.log("card:" + c);
-        // takes row from board with least amount of ponts
-        let cats = this.rows.map((r) => r.map((c) => category(c)));
-
-        let points = cats.map((c) =>
-          c.reduce((partialSum, a) => partialSum + a, 0)
-        );
-
-        const min = Math.min(...points);
-        let bestRowIndex = points.indexOf(min);
-
-        this.rows[bestRowIndex].map((c) => this.shuffledDeck.push(c)); // place all cards in row back to deck
-        this.rows[bestRowIndex] = [c]; // replace row
-        this.updatePoints(min); //update points
-        this.computerHand.splice(0, 1); // remove card from hand
-      } else {
-        console.log(randomCard);
+    computerPlayCard(c, i) {
+      let row = this.getRow(c);
+      if (row !== -1) {
+        console.log(c);
         if (this.rows[row].length < 5) {
-          this.rows[row].push(randomCard);
+          this.rows[row].push(c);
         } else {
           let cats = this.rows[row].map((c) => category(c));
           let points = cats.reduce((partialSum, a) => partialSum + a, 0);
           this.updatePoints(points);
           this.rows[row].map((c) => this.shuffledDeck.push(c)); // place all cards in row back to deck
-          this.rows[row] = [randomCard]; // replace row
+          this.rows[row] = [c]; // replace row
         }
         this.computerHand.splice(i, 1); //remove card from hand
+      } else {
+        // take the first row with the least points and place the lowest numbered card there
+        let min = 99;
+        [row, min] = this.getBestRow();
+
+        this.rows[row].map((c) => this.shuffledDeck.push(c)); // place all cards in row back to deck
+        this.rows[row] = [c]; // replace row
+        this.updatePoints(min); //update points
+        this.computerHand.splice(0, 1); // remove card from hand
+      }
+    },
+
+    getBestRow() {
+      // takes row from board with least amount of ponts
+      let cats = this.rows.map((r) => r.map((c) => category(c)));
+
+      let points = cats.map((c) =>
+        c.reduce((partialSum, a) => partialSum + a, 0)
+      );
+
+      const min = Math.min(...points);
+      let bestRowIndex = points.indexOf(min);
+
+      return [bestRowIndex, min];
+    },
+
+    async playCards() {
+      let sortedQueue = [...this.queue].sort((a, b) => a - b); // because the lowest card is played first
+
+      for (let i = 0; i < 2; i++) {
+        let c = sortedQueue[i];
+        let player = this.queue.indexOf(c);
+        // console.log("player :>> ", player);
+        this.activePlayer = player;
+
+        let index = this.handIndex[player];
+
+        // console.log("hand index :>> ", index);
+        if (player === 0) {
+          this.playCard(c, index);
+          console.log("done!");
+        } else {
+          this.computerPlayCard(c, index);
+        }
+
+        while (this.rowsSelectable === true && this.activePlayer === 0) {
+          console.log("computer is waiting..." + this.rowsSelectable);
+          await this.sleep(500);
+        }
       }
 
-      this.activePlayer = (this.activePlayer + 1) % 2;
+      // reset variables
+      this.activePlayer = 0;
+      this.queue = [];
+      this.handIndex = [];
     },
   },
 };
