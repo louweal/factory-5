@@ -9,9 +9,5 @@
 </template>
 
 <script>
-export default {
-  name: "Default",
-
-  transition: "page",
-};
+export default {};
 </script>

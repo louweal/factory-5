@@ -26,7 +26,7 @@
               />
             </div>
 
-            <!-- {{ computerPoints }} -->
+            {{ computerHand }}
 
             <hr class="d-lg-none" />
 
@@ -102,19 +102,19 @@ export default {
   },
 
   watch: {
-    hand(newHand, oldHand) {
-      if (newHand.length === 0) {
+    handsEmpty(newValue) {
+      if (newValue === true) {
         this.shuffledDeck = this.shuffle(this.shuffledDeck); // re-shuffle the deck
         this.hand = this.dealHand().sort((a, b) => a - b);
         this.computerHand = this.dealHand();
       }
     },
-    points(newPoints, oldPoints) {
+    points(newPoints) {
       if (newPoints <= 0) {
         this.$router.push("/lost");
       }
     },
-    computerPoints(newPoints, oldPoints) {
+    computerPoints(newPoints) {
       if (newPoints <= 0) {
         this.$router.push("/won");
       }
@@ -133,6 +133,14 @@ export default {
           points: this.computerPoints,
         },
       ];
+    },
+
+    handsEmpty() {
+      return (
+        this.hand.length === 0 &&
+        this.computerHand.length === 0 &&
+        this.queue.length === 0
+      );
     },
   },
 
@@ -349,6 +357,8 @@ export default {
           console.log("computer is waiting..." + this.rowsSelectable);
           await this.sleep(500);
         }
+
+        await this.sleep(1000); // sleep for animation
       }
 
       // reset variables

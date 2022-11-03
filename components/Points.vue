@@ -31,8 +31,8 @@
         <div class="row">
           <div
             class="
-              col-12 col-lg-10
-              offset-lg-1
+              col-12 col-lg-6
+              offset-lg-3
               text-center
               align-items-center
               justify-content-center
@@ -42,7 +42,7 @@
             <hr />
           </div>
 
-          <div class="col-12 col-lg-8 offset-lg-2 mt-3">
+          <div class="col-12 col-lg-6 offset-lg-3 mt-3">
             <ul class="list-group">
               <li
                 v-for="(player, index) in leaderboard"

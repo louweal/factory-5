@@ -10,7 +10,7 @@ $primary: #e9b2b7;
 $secondary: #d6d7c4;
 $light: #d3d3d3;
 
-$body-bg: #fff; // linear-gradient(180deg, rgba(#191970, 1) 0%, rgba(#080830, 1) 100%);
+$body-bg: #ebebeb; // linear-gradient(180deg, rgba(#191970, 1) 0%, rgba(#080830, 1) 100%);
 // $body-color: #fff;
 $link-color: #111;
 $link-decoration: none;
@@ -82,16 +82,6 @@ $input-bg: rgba(#fff, 0.2);
 $input-border-width: 3px;
 $input-border-color: #000;
 
-// $input-border-width: 0;
-// $input-btn-focus-width: 0;
-// $input-focus-bg: auto;
-
-// $form-check-input-border: none;
-// $form-check-input-width: 1.4em;
-// $form-check-input-checked-bg-color: auto;
-
-// $btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#ffffff'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>");
-
 // 3. Include remainder of required Bootstrap stylesheets
 @import "@/node_modules/bootstrap/scss/variables";
 @import "@/node_modules/bootstrap/scss/mixins";
@@ -107,31 +97,15 @@ $input-border-color: #000;
 @import "@/node_modules/bootstrap/scss/card";
 @import "@/node_modules/bootstrap/scss/forms";
 @import "@/node_modules/bootstrap/scss/list-group";
-// @import "@/node_modules/bootstrap/scss/dropdown";
-// @import "@/node_modules/bootstrap/scss/transitions";
-// @import "@/node_modules/bootstrap/scss/badge";
-// @import "@/node_modules/bootstrap/scss/navbar";
-// @import "@/node_modules/bootstrap/scss/nav";
-// @import "@/node_modules/bootstrap/scss/images";
 
 // Helpers
 @import "@/node_modules/bootstrap/scss/helpers/position";
 @import "@/node_modules/bootstrap/scss/helpers/stacks";
-// @import "@/node_modules/bootstrap/scss/helpers/vr";
-// @import "@/node_modules/bootstrap/scss/helpers/ratio";
-
-// Utilities
-$utilities: map-merge(
-  $utilities,
-  (
-    "cursor": (
-      property: cursor,
-      values: pointer,
-    ),
-  )
-);
-
 @import "@/node_modules/bootstrap/scss/utilities/api";
+
+.cursor-pointer {
+  cursor: pointer;
+}
 
 body {
   max-height: 100vh !important;
