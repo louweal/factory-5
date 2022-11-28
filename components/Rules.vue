@@ -110,7 +110,7 @@
             <h3>End of game</h3>
             <hr />
 
-            <p>The game end when one of the players lost all his points.</p>
+            <p>The game ends when one of the players lost all his points.</p>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default {
     base: "/",
   },
   head: {
-    title: "Factory 5",
+    title: "FactoryFive",
     htmlAttrs: {
       lang: "en",
     },
@@ -17,7 +17,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "A web3 board game!",
+        content: "A web3 board game",
       },
       { name: "format-detection", content: "telephone=no" },
     ],
