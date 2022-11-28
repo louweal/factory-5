@@ -10,7 +10,7 @@
       <Nuxt />
       <Footer />
     </div>
-    <!-- <rules /> -->
+    <rules />
   </div>
 </template>
 

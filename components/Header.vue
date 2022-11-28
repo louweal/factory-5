@@ -16,16 +16,13 @@
       </a>
 
       <div class="ms-auto d-flex align-items-center gap-2 gap-md-4">
-        <nuxt-link
-          to="/account"
-          event=""
-          @click.native="$router.push('/account')"
-          class="cursor-pointer"
-        >
+        <div @click="$store.commit('toggleRules')" class="cursor-pointer">
           Rules
-        </nuxt-link>
+        </div>
 
-        <div class="btn btn-secondary">Points</div>
+        <div class="btn btn-secondary" @click="$store.commit('togglePoints')">
+          Points
+        </div>
       </div>
     </div>
   </nav>

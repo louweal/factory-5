@@ -33,9 +33,6 @@ export default {
   build: {},
 
   generate: {
-    routes: [
-      "/post/jambo-bark-end-developer",
-      "/post/helix-hedera-hackathon-2022",
-    ],
+    fallback: true, // for error pages on Netlify
   },
 };

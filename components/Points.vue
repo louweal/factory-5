@@ -1,16 +1,16 @@
 <template>
   <div
-    :class="showPoints ? 'points--active' : false"
-    class="w-100 position-absolute points start-0"
+    :class="$store.state.showPoints ? 'points--active' : false"
+    class="w-100 position-absolute points start-50 top-50 translate-middle"
   >
     <div class="container py-5">
       <div class="card p-5 position-relative">
         <div
-          @click="togglePoints"
+          @click="$store.commit('togglePoints')"
           class="
             position-absolute
-            top-100
-            start-50
+            top-0
+            end-0
             translate-middle
             rounded-circle
             bg-primary
@@ -19,12 +19,8 @@
             fw-bold
           "
         >
-          <div v-if="showPoints" class="mt-1 mx-1">
+          <div class="mt-1 mx-1">
             <i class="bi-x fs-3 lh-1"></i>
-          </div>
-
-          <div v-else class="my-1 mx-2">
-            {{ points }}
           </div>
         </div>
 
@@ -67,11 +63,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      showPoints: false,
-    };
-  },
+  // data() {
+  //   return {
+  //     showPoints: false,
+  //   };
+  // },
 
   props: {
     points: {
@@ -83,25 +79,19 @@ export default {
       default: () => {},
     },
   },
-
-  methods: {
-    togglePoints() {
-      this.showPoints = !this.showPoints;
-    },
-  },
 };
 </script>
 
 <style lang="scss" scoped>
 .points {
-  bottom: calc(100% - 2 * 42px); //calc(86% + 2vw);
-  transition: all 0.5s ease-in;
+  transition: opacity 0.5s ease-in;
   z-index: 4;
+  opacity: 0;
+  visibility: hidden;
 
   &--active {
-    // bottom: auto;
-    // top: 0;
-    bottom: 25%;
+    opacity: 1;
+    visibility: visible;
   }
 }
 </style>

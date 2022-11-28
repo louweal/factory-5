@@ -62,7 +62,7 @@
       -{{ updatedPoints }}
     </span>
 
-    <!-- <points :points="points" :leaderboard="leaderboard" /> -->
+    <points :points="points" :leaderboard="leaderboard" />
   </main>
 </template>
 
