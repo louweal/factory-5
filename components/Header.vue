@@ -5,7 +5,7 @@
     ref="header"
   >
     <div class="container-xl d-flex justify-content-between align-items-center">
-      <a :href="$route.path" class="me-3 me-sm-4" aria-label="to homepage">
+      <a :href="$route.path[0]" class="me-3 me-sm-4" aria-label="to homepage">
         <h1 class="heading-c-2 fs-2 mb-0">FactoryFive</h1>
 
         <!-- <img

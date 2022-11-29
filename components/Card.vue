@@ -1,10 +1,22 @@
 <template>
-  <div class="card bg-dark text-white">
-    <img
+  <div
+    class="
+      card
+      xxxbg-dark
+      ratio ratio-1x1
+      text-white
+      position-relative
+      border
+      rounded
+    "
+  >
+    <!-- <img
       :src="require(`~/images/bg${cat}.png`)"
       class="card-img"
       alt="factories"
-    />
+    /> -->
+
+    <div class="ratio ratio-1x1 rounded" :class="`card__bg${cat}`"></div>
 
     <particle v-for="k in 3 * cat" :ymin="33" :key="'k' + k" />
 
@@ -65,13 +77,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.card-img {
+  opacity: 0;
+  background-color: pink;
+}
+
 .card {
   font-family: "Chewy", sans-serif;
   animation: fadeIn 0.5s 0.2s ease-in forwards;
   opacity: 0;
+  background-color: pink;
+  border: 1px solid #000;
+  position: relative;
 
   text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000,
     -2px -2px 0 #000;
+
+  &__bg {
+    &1 {
+      background-color: #80c6e6;
+    }
+    &2 {
+      background-color: #aad9e6;
+    }
+    &3 {
+      background-color: #c9e3e7;
+    }
+    &5 {
+      background-color: #c89866;
+    }
+    &7 {
+      background-color: #994c01;
+    }
+  }
 
   .card-center {
     width: 100%;

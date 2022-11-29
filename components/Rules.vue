@@ -4,13 +4,7 @@
     :class="$store.state.showRules ? 'rules--active' : false"
   >
     <div
-      class="
-        rules__bg
-        min-vh-100 min-vw-100
-        position-absolute
-        top-0
-        cursor-pointer
-      "
+      class="rules__bg h-100 min-vw-100 position-absolute top-0 cursor-pointer"
       :class="$store.state.showRules ? 'rules__bg--active' : false"
       @click="$store.commit('toggleRules')"
     ></div>
@@ -57,16 +51,37 @@
               <hr />
 
               <p>
-                Try to get as few as possible cards. Every card you get, yields
-                a minus point for each
-                <span class="heading-c-2">&nbsp;o</span>-symbol shown on that
-                card!
+                Try to receive as few as possible cards. Every card you receive,
+                yields a minus point for each pollution symbol (<span
+                  class="heading-c-2"
+                  >o</span
+                >) shown on that card. Each player starts with 50 points.
               </p>
 
-              <h3>Start</h3>
+              <h3>Introduction</h3>
               <hr />
 
-              <p>lorem ipsum to do</p>
+              <p>
+                All players select one card from their hand. Your hand is shown
+                on the left side of the board on computers and above the board
+                on mobile devices.
+              </p>
+
+              <p>
+                When every player has selected a card, the cards are added to
+                the board according to the rules explained below. The numbers on
+                the card determine the order in which they are added to the
+                board: they will be added in ascending order.
+              </p>
+
+              <p>A row can't contain more than 5 cards.</p>
+
+              <p>
+                When everyone has played all 10 cards from their hands, everyone
+                gets 10 new cards from the deck. This continues until someone
+                has lost all their points. The person who has the most remaining
+                points, wins the game.
+              </p>
             </div>
             <div class="col-12 col-lg-6">
               <h3>Rules</h3>
@@ -76,36 +91,31 @@
 
               <h4>#1: Ascending order</h4>
 
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Ratione molestias, rerum quo.
-              </p>
+              <p>The numbers in each row need to be in ascending order.</p>
 
               <h4>#2: Smallest difference</h4>
 
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Ratione molestias, rerum quo, odio ea iste ut illo velit
-                deserunt est animi unde dolores enim. Deserunt repellendus fuga
-                ipsam! Cum, esse?
+                A card has to be added to the row of which the last card has the
+                smallest difference with the new card.
               </p>
 
               <h4>#3: Full row</h4>
 
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Ratione molestias, rerum quo, odio ea iste ut illo velit
-                deserunt est animi unde dolores enim. Deserunt repellendus fuga
-                ipsam! Cum, esse?
+                A row is full when it contains 5 cards. If someone needs to add
+                a new card to this row, according to Rule #2, he has to take the
+                5 cards away from the board and the new card forms a new row. He
+                loses a number of points equal to the number of pollution
+                symbols on the cards he takes.
               </p>
 
               <h4>#4: Lowest number</h4>
 
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Ratione molestias, rerum quo, odio ea iste ut illo velit
-                deserunt est animi unde dolores enim. Deserunt repellendus fuga
-                ipsam! Cum, esse?
+                If a card is too low to fit in any of the rows, the player
+                chooses a random row to take away from the board. The new card
+                will be the first card in a new row.
               </p>
 
               <h3>End of game</h3>
@@ -135,13 +145,13 @@ export default {};
   }
 
   &__bg {
-    background-color: var(--bs-light);
+    background-color: #fff; // var(--bs-light);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s linear;
+    transition: opacity 0.3s cubic-bezier(0.2, 0, 0.1, 1);
 
     &--active {
-      opacity: 0.6;
+      opacity: 1;
       visibility: visible;
     }
   }

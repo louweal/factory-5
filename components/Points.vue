@@ -1,11 +1,11 @@
 <template>
   <div
     :class="$store.state.showPoints ? 'points--active' : false"
-    class="w-100 position-absolute points start-50 top-50 translate-middle"
+    class="position-absolute points"
   >
-    <div class="container py-5">
-      <div class="card p-5 position-relative">
-        <div
+    <div class="xxxcontainer">
+      <div class="position-relative">
+        <!-- <div
           @click="$store.commit('togglePoints')"
           class="
             position-absolute
@@ -22,10 +22,10 @@
           <div class="mt-1 mx-1">
             <i class="bi-x fs-3 lh-1"></i>
           </div>
-        </div>
+        </div> -->
 
         <div class="row">
-          <div
+          <!-- <div
             class="
               col-12 col-lg-6
               offset-lg-3
@@ -34,15 +34,11 @@
               justify-content-center
             "
           >
-            <h3>Points</h3>
-            <hr />
-          </div>
+          </div> -->
 
-          <div class="col-12 col-lg-6 offset-lg-3 mt-3">
+          <div class="col-12">
             <ul class="list-group">
               <li
-                v-for="(player, index) in leaderboard"
-                :key="index"
                 class="
                   list-group-item
                   d-flex
@@ -50,8 +46,21 @@
                   align-items-center
                 "
               >
-                {{ player.name }}
-                <span class="heading-c-2">{{ player.points }}</span>
+                You
+                <span class="heading-c-2">{{ $store.state.myPoints }}</span>
+              </li>
+              <li
+                class="
+                  list-group-item
+                  d-flex
+                  justify-content-between
+                  align-items-center
+                "
+              >
+                Computer
+                <span class="heading-c-2">{{
+                  $store.state.computerPoints
+                }}</span>
               </li>
             </ul>
           </div>
@@ -62,24 +71,7 @@
 </template>
 
 <script>
-export default {
-  // data() {
-  //   return {
-  //     showPoints: false,
-  //   };
-  // },
-
-  props: {
-    points: {
-      type: Number,
-      default: 50,
-    },
-    leaderboard: {
-      type: [Array, Boolean],
-      default: () => {},
-    },
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
@@ -88,6 +80,9 @@ export default {
   z-index: 4;
   opacity: 0;
   visibility: hidden;
+  min-width: 300px;
+  top: 100px;
+  right: 2%;
 
   &--active {
     opacity: 1;

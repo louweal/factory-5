@@ -11,6 +11,7 @@
       <Footer />
     </div>
     <rules />
+    <points />
   </div>
 </template>
 
