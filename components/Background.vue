@@ -1,6 +1,5 @@
 <template>
   <div class="background">
-    <!-- {{ $route.path }} -->
     <particle v-for="i in 50" :key="i" />
     <particle v-for="j in 50" :ymin="66" :key="'j' + j" />
     <particle v-for="k in 50" :ymin="33" :key="'k' + k" />

@@ -11,12 +11,8 @@ $secondary: #d6d7c4;
 $light: #d3d3d3;
 
 $body-bg: #ebebeb; // linear-gradient(180deg, rgba(#191970, 1) 0%, rgba(#080830, 1) 100%);
-// $body-color: #fff;
 $link-color: #111;
 $link-decoration: none;
-// $link-hover-color: $light;
-
-// $text-light: #acb3df;
 
 $border-width: 3px;
 $border-radius: 1rem;
@@ -46,8 +42,6 @@ $btn-active-box-shadow: 0;
 $btn-focus-width: 0;
 $btn-padding-y: 0.35rem;
 $btn-padding-x: 1rem;
-// $btn-border-width: 3px;
-// $btn-border-radius: 1rem;
 $btn-font-weight: 500;
 $btn-border-color: #000;
 
@@ -94,7 +88,6 @@ $input-border-color: #000;
 @import "@/node_modules/bootstrap/scss/type";
 @import "@/node_modules/bootstrap/scss/containers";
 @import "@/node_modules/bootstrap/scss/grid";
-// @import "@/node_modules/bootstrap/scss/card";
 @import "@/node_modules/bootstrap/scss/forms";
 @import "@/node_modules/bootstrap/scss/list-group";
 
@@ -110,11 +103,6 @@ $input-border-color: #000;
 
 body {
   max-height: 100vh !important;
-
-  &.disable-scroll {
-    overflow-y: hidden;
-    position: fixed;
-  }
 }
 
 ::-webkit-scrollbar {
@@ -170,11 +158,6 @@ a {
     -2px -2px 0 #000;
 }
 
-// .mb-c {
-//   // custom margin bottom to avoid overlay with busy part of background
-//   margin-bottom: 280px;
-// }
-
 .animation-c {
   animation: fadeInUpAway 3s 0s ease-out forwards;
   transform: translateY(300px) scale(30%);
@@ -196,13 +179,6 @@ a {
     opacity: 0;
   }
 }
-
-// .animation-rules {
-//   animation: fadeInUp 1s 0s cubic-bezier(0.2, 0, 0.1, 1) forwards;
-//   transform: translateY(90%);
-//   opacity: 0.2;
-//   // z-index: 3;
-// }
 
 @keyframes fadeInUp {
   50% {

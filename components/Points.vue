@@ -3,68 +3,32 @@
     :class="$store.state.showPoints ? 'points--active' : false"
     class="position-absolute points"
   >
-    <div class="xxxcontainer">
-      <div class="position-relative">
-        <!-- <div
-          @click="$store.commit('togglePoints')"
-          class="
-            position-absolute
-            top-0
-            end-0
-            translate-middle
-            rounded-circle
-            bg-primary
-            cursor-pointer
-            border
-            fw-bold
-          "
-        >
-          <div class="mt-1 mx-1">
-            <i class="bi-x fs-3 lh-1"></i>
-          </div>
-        </div> -->
-
-        <div class="row">
-          <!-- <div
+    <div class="row">
+      <div class="col-12">
+        <ul class="list-group">
+          <li
             class="
-              col-12 col-lg-6
-              offset-lg-3
-              text-center
+              list-group-item
+              d-flex
+              justify-content-between
               align-items-center
-              justify-content-center
             "
           >
-          </div> -->
-
-          <div class="col-12">
-            <ul class="list-group">
-              <li
-                class="
-                  list-group-item
-                  d-flex
-                  justify-content-between
-                  align-items-center
-                "
-              >
-                You
-                <span class="heading-c-2">{{ $store.state.myPoints }}</span>
-              </li>
-              <li
-                class="
-                  list-group-item
-                  d-flex
-                  justify-content-between
-                  align-items-center
-                "
-              >
-                Computer
-                <span class="heading-c-2">{{
-                  $store.state.computerPoints
-                }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+            You
+            <span class="heading-c-2">{{ $store.state.myPoints }}</span>
+          </li>
+          <li
+            class="
+              list-group-item
+              d-flex
+              justify-content-between
+              align-items-center
+            "
+          >
+            Computer
+            <span class="heading-c-2">{{ $store.state.computerPoints }}</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

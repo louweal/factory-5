@@ -17,7 +17,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "A web3 board game",
+        content: "An online board game",
       },
       { name: "format-detection", content: "telephone=no" },
     ],
