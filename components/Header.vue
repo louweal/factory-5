@@ -7,17 +7,11 @@
     <div class="container-xl d-flex justify-content-between align-items-center">
       <a :href="$route.path[0]" class="me-3 me-sm-4" aria-label="to homepage">
         <h1 class="heading-c-2 fs-2 mb-0">FactoryFive</h1>
-
-        <!-- <img
-          xxxsrc="@/images/logo.svg"
-          alt="to homepage"
-          height="46"
-        /> -->
       </a>
 
       <div class="ms-auto d-flex align-items-center gap-2 gap-md-4">
         <div @click="$store.commit('toggleRules')" class="cursor-pointer">
-          Rules
+          {{ $store.state.showRules ? "Hide rules" : "Rules" }}
         </div>
 
         <div class="btn btn-secondary" @click="$store.commit('togglePoints')">
@@ -81,19 +75,6 @@ export default {
         this.showDropdown = false;
       }
     },
-
-    // toggleDropdown() {
-    //   this.showDropdown = !this.showDropdown;
-    // },
-
-    // hideDropdown() {
-    //   this.showDropdown = false;
-    // },
-
-    // toggleModal() {
-    //   this.$store.commit("toggleModal");
-    //   document.getElementById("page").classList.toggle("is-blurred");
-    // },
   },
 };
 </script>
